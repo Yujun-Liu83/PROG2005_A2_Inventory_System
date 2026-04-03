@@ -64,7 +64,7 @@ export function updateItemByName(
     if (updatedData.category !== undefined) item.category = updatedData.category;
     if (updatedData.quantity !== undefined) {
         item.quantity = updatedData.quantity;
-        // Recalculate stock status when quantity changes
+    
         if (item.quantity === 0) item.stockStatus = 'Out of Stock';
         else if (item.quantity <= 5) item.stockStatus = 'Low Stock';
         else item.stockStatus = 'In Stock';

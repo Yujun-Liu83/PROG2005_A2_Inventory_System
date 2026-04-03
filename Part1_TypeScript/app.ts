@@ -101,7 +101,6 @@ document.getElementById('addForm')!.addEventListener('submit', (e) => {
     }
 });
 
-// ---- Edit Item Form Handler (by name) ----
 document.getElementById('editForm')!.addEventListener('submit', (e) => {
     e.preventDefault();
 
