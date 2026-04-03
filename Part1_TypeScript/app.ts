@@ -67,7 +67,6 @@ function refreshUI() {
     renderPopularItems();
 }
 
-// ---- Add Item Form Handler ----
 document.getElementById('addForm')!.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevent page reload
 

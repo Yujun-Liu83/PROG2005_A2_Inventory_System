@@ -1,4 +1,3 @@
-// inventory.ts - Data model and core operations for the inventory system
 
 // Define the structure of an inventory item
 export interface Item {
