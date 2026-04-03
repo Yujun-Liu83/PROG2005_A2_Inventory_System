@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Inventory Management System - HD Version</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📦 Inventory Management System</h1>
+    <div id="message" class="message"></div>
+
+
+    <div class="dashboard">
+    
+      <div class="forms">
+     
+        <div class="card">
+          <h2>➕ Add New Item</h2>
+          <form id="addForm">
+            <input type="text" id="addId" placeholder="ID (ITEM-0001)" required pattern="ITEM-\d{4}">
+            <input type="text" id="addName" placeholder="Name" required>
+            <select id="addCategory" required>
+              <option value="Electronics">Electronics</option><option value="Furniture">Furniture</option>
+              <option value="Clothing">Clothing</option><option value="Tools">Tools</option>
+              <option value="Miscellaneous">Miscellaneous</option>
+            </select>
+            <input type="number" id="addQty" placeholder="Quantity" required min="0">
+            <input type="number" id="addPrice" placeholder="Price" required min="0" step="0.01">
+            <input type="text" id="addSupplier" placeholder="Supplier" required>
+            <label><input type="checkbox" id="addPopular"> Popular Item</label>
+            <input type="text" id="addComment" placeholder="Comment (optional)">
+            <button type="submit">Add Item</button>
+          </form>
+        </div>
+
+       
+        <div class="card">
+          <h2>✏️ Edit Item by Name</h2>
+          <form id="editForm">
+            <input type="text" id="editOldName" placeholder="Current Name" required>
+            <input type="text" id="editNewName" placeholder="New Name (optional)">
+            <select id="editCategory">
+              <option value="">-- Keep same --</option>
+              <option value="Electronics">Electronics</option><option value="Furniture">Furniture</option>
+              <option value="Clothing">Clothing</option><option value="Tools">Tools</option>
+              <option value="Miscellaneous">Miscellaneous</option>
+            </select>
+            <input type="number" id="editQty" placeholder="New Quantity" min="0">
+            <input type="number" id="editPrice" placeholder="New Price" min="0" step="0.01">
+            <input type="text" id="editSupplier" placeholder="New Supplier">
+            <label><input type="checkbox" id="editPopular"> Set as Popular</label>
+            <input type="text" id="editComment" placeholder="New Comment">
+            <button type="submit">Update Item</button>
+          </form>
+        </div>
+
+       
+        <div class="card">
+          <h2>🗑️ Delete Item by Name</h2>
+          <form id="deleteForm">
+            <input type="text" id="deleteName" placeholder="Item Name" required>
+            <button type="submit" class="danger">Delete (Confirm)</button>
+          </form>
+        </div>
+
+    
+        <div class="card">
+          <h2>🔍 Search by Name</h2>
+          <input type="text" id="searchInput" placeholder="Enter name...">
+          <button id="searchBtn">Search</button>
+          <div id="searchResult"></div>
+        </div>
+      </div>
+
+    
+      <div class="lists">
+        <div class="card">
+          <h2>📋 All Items</h2>
+          <div class="table-responsive">
+            <table id="allItemsTable">
+              <thead><tr><th>ID</th><th>Name</th><th>Category</th><th>Qty</th><th>Price</th><th>Supplier</th><th>Status</th><th>Popular</th><th>Comment</th></tr>
+              </thead>
+              <tbody id="allItemsBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h2>⭐ Popular Items</h2>
+          <div class="table-responsive">
+            <table id="popularTable">
+              <thead><tr><th>ID</th><th>Name</th><th>Category</th><th>Qty</th><th>Price</th></tr></thead>
+              <tbody id="popularBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
