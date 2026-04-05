@@ -6,6 +6,8 @@ import { Item } from '../item.model';
 
 @Component({
   selector: 'app-inventory',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './inventory.html',   
   styleUrls: ['./inventory.css']
 })
