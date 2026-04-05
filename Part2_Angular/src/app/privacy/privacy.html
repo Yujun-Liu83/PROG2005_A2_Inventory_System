@@ -1,2 +1,29 @@
+<!-- Page heading for privacy and security section -->
 <h2>Privacy & Security Analysis</h2>
-<p>This page will explain key security considerations for mobile apps.</p>
+
+<!-- Introductory paragraph for security principles -->
+<p>This application adheres to the following mobile app security and privacy principles:</p>
+
+<!-- List of key security and privacy practices implemented -->
+<ul>
+  <!-- Principle 1: Data storage security -->
+  <li><strong>Local Data Storage Only:</strong> All inventory data is stored in the browser's memory. No data is transmitted to any external server, eliminating network-based interception risks.</li>
+  
+  <!-- Principle 2: No third-party tracking -->
+  <li><strong>No Third-Party Tracking:</strong> The app does not integrate any analytics, advertising, or tracking SDKs. User interactions are not logged or shared.</li>
+  
+  <!-- Principle 3: User input validation -->
+  <li><strong>Input Validation:</strong> All user inputs (e.g., quantity, price) are validated on the client side using TypeScript type checking and range checks, preventing malformed data from corrupting the application state.</li>
+  
+  <!-- Principle 4: Least privilege access -->
+  <li><strong>Least Privilege Principle:</strong> The Angular application requests no device permissions (camera, location, contacts, etc.), reducing the attack surface.</li>
+  
+  <!-- Principle 5: Secure coding and XSS protection -->
+  <li><strong>Secure Coding Practices:</strong> Use of Angular's built-in sanitization for data binding prevents XSS attacks. Strong typing reduces runtime errors and injection vulnerabilities.</li>
+  
+  <!-- Principle 6: Temporary data only (no persistent storage) -->
+  <li><strong>No Persistent Cookies or Local Storage:</strong> The app does not use cookies or localStorage for sensitive data; all data is ephemeral and cleared when the browser tab is closed.</li>
+</ul>
+
+<!-- Additional recommendations for production environment -->
+<p>For further security enhancements in a production environment, consider implementing HTTPS, Content Security Policy (CSP), and backend authentication.</p>

@@ -1,0 +1,9 @@
+/* Set line height for better readability in unordered lists */
+ul {
+    line-height: 1.6;
+  }
+  
+  /* Add bottom margin to list items for better spacing between items */
+  li {
+    margin-bottom: 10px;
+  }
