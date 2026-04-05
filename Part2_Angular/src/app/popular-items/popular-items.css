@@ -1,0 +1,38 @@
+/* Style for "no popular items" message: gray italic text */
+.no-popular {
+    color: #666;
+    font-style: italic;
+  }
+  
+  /* Responsive styles for mobile devices (screen width ≤ 600px) */
+  @media (max-width: 600px) {
+    /* Change table elements to block layout for mobile adaptation */
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    /* Hide table header on small screens */
+    thead tr { display: none; }
+  
+    /* Add bottom margin and border for each table row */
+    tr {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+    }
+  
+    /* Table cell layout: flex with space between label and value */
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+      border: none;
+      border-bottom: 1px solid #eee;
+    }
+  
+    /* Show data label as field name before cell content */
+    td:before {
+      content: attr(data-label);
+      font-weight: bold;
+      width: 40%;
+    }
+  }

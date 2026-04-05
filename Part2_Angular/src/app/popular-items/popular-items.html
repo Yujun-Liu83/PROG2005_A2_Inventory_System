@@ -1,2 +1,32 @@
+<!-- Page title for popular items section -->
 <h2>Popular Items</h2>
-<p>List of popular items will be displayed here.</p>
+
+<!-- Display message when there are no popular items -->
+<div *ngIf="popularItems.length === 0" class="no-popular">
+  No popular items found.
+</div>
+
+<!-- Display responsive table when popular items exist -->
+<div *ngIf="popularItems.length > 0" class="table-responsive">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Supplier</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through popular items and render each item in a table row -->
+      <tr *ngFor="let item of popularItems">
+        <td data-label="Name">{{ item.name }}</td>
+        <td data-label="Category">{{ item.category }}</td>
+        <td data-label="Price">{{ item.price | currency }}</td>
+        <td data-label="Supplier">{{ item.supplier }}</td>
+        <td data-label="Comments">{{ item.comments }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
