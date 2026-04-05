@@ -1,2 +1,59 @@
+<!-- Page title for item search section -->
 <h2>Search Items</h2>
-<p>Search form and results will appear here.</p>
+
+<!-- Search and filter controls container -->
+<div class="search-filters">
+  <!-- Input field for searching by item name with two-way binding -->
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Enter item name" class="search-input">
+  
+  <!-- Dropdown for filtering items by category -->
+  <select [(ngModel)]="filterCategory" class="filter-select">
+    <option value="">All Categories</option>
+    <!-- Loop through category array to generate options -->
+    <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+  </select>
+  
+  <!-- Dropdown for filtering items by stock status -->
+  <select [(ngModel)]="filterStock" class="filter-select">
+    <option value="">All Stock Status</option>
+    <!-- Loop through stock status array to generate options -->
+    <option *ngFor="let status of stockStatuses" [value]="status">{{ status }}</option>
+  </select>
+  
+  <!-- Button to trigger search and filter function -->
+  <button (click)="onSearch()">Search</button>
+</div>
+
+<!-- Message displayed when no search results are found -->
+<div *ngIf="searchResults.length === 0 && searchTerm" class="no-results">
+  No items found.
+</div>
+
+<!-- Table to display search results when results exist -->
+<div *ngIf="searchResults.length > 0" class="table-responsive">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Supplier</th>
+        <th>Stock</th>
+        <th>Popular</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through search results and display each item in a row -->
+      <tr *ngFor="let item of searchResults">
+        <td data-label="Name">{{ item.name }}</td>
+        <td data-label="Category">{{ item.category }}</td>
+        <td data-label="Quantity">{{ item.quantity }}</td>
+        <td data-label="Price">{{ item.price | currency }}</td>
+        <td data-label="Supplier">{{ item.supplier }}</td>
+        <td data-label="Stock">{{ item.stockStatus }}</td>
+        <td data-label="Popular">{{ item.isPopular ? 'Yes' : 'No' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
