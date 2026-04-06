@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+/* Global base styles for the entire application */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  /* Navigation bar container styling */
+  nav {
+    background-color: #007bff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  /* Navigation link text styling */
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  
+  /* Hover effect for navigation links */
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive styles for mobile devices (screen width ≤ 600px) */
+  @media (max-width: 600px) {
+    /* Reduce body padding on small screens */
+    body {
+      padding: 10px;
+    }
+  
+    /* Adjust navigation links for mobile layout */
+    nav a {
+      display: inline-block;
+      margin: 5px 10px 5px 0;
+    }
+  }
