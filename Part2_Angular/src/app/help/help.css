@@ -1,0 +1,16 @@
+/* Set maximum width for FAQ section to improve readability */
+.faq {
+    max-width: 800px;
+  }
+  
+  /* Style for each FAQ item: bottom margin, separator line, bottom padding */
+  .faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  /* FAQ question title color: blue theme */
+  .faq-item h3 {
+    color: #007bff;
+  }
