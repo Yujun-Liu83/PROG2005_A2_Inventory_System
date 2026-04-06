@@ -1,148 +1,181 @@
-/* Morandi Color Palette - Main Theme Colors */
+/* 专业商务配色：白色背景，蓝色主色调，绿色辅助，黑色文字 */
 :root {
-  --sage: #9CAF9A;      /* Sage Green */
-  --dusty-pink: #D4B8B4; /* Dusty Pink */
-  --warm-gray: #C4C2C0;  /* Warm Gray */
-  --olive: #B1B89D;      /* Olive Green */
-  --taupe: #B7A99A;      /* Taupe */
-  --off-white: #F5F2EB;  /* Off White */
-  --charcoal: #4A4A4A;   /* Charcoal Text */
+  --primary-blue: #2c7da0;   /* 主蓝色 */
+  --primary-dark: #1f5068;   /* 深蓝（悬停） */
+  --success-green: #2e7d32;  /* 绿色（成功按钮） */
+  --danger-red: #c62828;      /* 红色（删除） */
+  --light-bg: #f8f9fa;        /* 浅灰背景 */
+  --border-light: #dee2e6;    /* 边框浅灰 */
+  --text-dark: #212529;       /* 深色文字 */
+  --text-muted: #6c757d;      /* 灰色文字 */
 }
 
-/* Global Body Styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  background-color: var(--off-white);
-  color: var(--charcoal);
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
   margin: 0;
   padding: 20px;
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Navigation Bar */
+/* 主要内容容器 */
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 导航栏 */
 nav {
-  background-color: var(--sage);
-  padding: 12px 20px;
-  border-radius: 40px;
+  background-color: white;
+  padding: 0;
   margin-bottom: 30px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-right: 24px;
-  font-weight: 500;
-  transition: opacity 0.2s;
-}
-nav a:hover {
-  opacity: 0.8;
-  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border-light);
 }
 
-/* Card Container (Used for Form Sections) */
+nav a {
+  color: var(--text-dark);
+  text-decoration: none;
+  padding: 14px 24px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+  background-color: #f1f3f5;
+  color: var(--primary-blue);
+  border-bottom-color: var(--primary-blue);
+}
+
+/* 当前激活的链接 */
+nav a.active-link {
+  color: var(--primary-blue);
+  border-bottom-color: var(--primary-blue);
+  background-color: #e9ecef;
+}
+
+/* 卡片样式 */
 .card {
   background-color: white;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 20px 24px;
   margin-bottom: 28px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border: 1px solid #E8E5DF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-light);
 }
 
-/* Data Table */
+/* 表格 */
 table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
 th {
-  background-color: var(--taupe);
-  color: white;
+  background-color: #e9ecef;
+  color: var(--text-dark);
   font-weight: 600;
   padding: 12px 10px;
+  border-bottom: 1px solid var(--border-light);
 }
 td {
   padding: 10px;
-  border-bottom: 1px solid #EBE7E0;
+  border-bottom: 1px solid #f0f0f0;
   background-color: white;
 }
 tr:hover td {
-  background-color: #F9F7F3;
+  background-color: #f8f9fa;
 }
 
-/* Buttons */
+/* 按钮 */
 button {
-  background-color: var(--warm-gray);
   border: none;
   padding: 6px 14px;
-  border-radius: 30px;
+  border-radius: 6px;
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s;
-  color: #3E3A39;
   font-weight: 500;
+  background-color: #e9ecef;
+  color: var(--text-dark);
 }
 button:hover {
-  background-color: var(--sage);
-  color: white;
+  background-color: #dee2e6;
   transform: translateY(-1px);
 }
 button.danger {
-  background-color: #E2C2C0; /* Soft Red */
+  background-color: #f8d7da;
+  color: var(--danger-red);
 }
 button.danger:hover {
-  background-color: #D1A8A5;
-  color: white;
+  background-color: #f5c6cb;
+  color: #b71c1c;
 }
 button.primary {
-  background-color: var(--olive);
+  background-color: var(--primary-blue);
   color: white;
 }
 button.primary:hover {
-  background-color: #9DAF87;
+  background-color: var(--primary-dark);
 }
 
-/* Form Elements */
+/* 表单元素 */
 input, select {
   padding: 8px 12px;
-  border-radius: 30px;
-  border: 1px solid #DCD7CF;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
   background-color: white;
   font-size: 0.9rem;
   outline: none;
   transition: 0.2s;
 }
 input:focus, select:focus {
-  border-color: var(--sage);
-  box-shadow: 0 0 0 2px rgba(156, 175, 154, 0.2);
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 2px rgba(44,125,160,0.2);
 }
 label {
   margin-right: 12px;
   font-weight: 500;
 }
 
-/* Message Alerts */
+/* 消息提示 */
 .message {
   padding: 10px 18px;
-  border-radius: 40px;
+  border-radius: 8px;
   margin: 16px 0;
   font-weight: 500;
 }
 .success {
-  background-color: #E2EFDA;
-  color: #4A6442;
-  border-left: 4px solid var(--sage);
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 4px solid var(--success-green);
 }
 .error {
-  background-color: #F3E2E0;
-  color: #A55B56;
-  border-left: 4px solid var(--dusty-pink);
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 4px solid var(--danger-red);
 }
 
-/* Layout Helpers */
+/* 表单网格 */
 .form-grid {
   display: flex;
   flex-wrap: wrap;
@@ -150,17 +183,28 @@ label {
   align-items: center;
 }
 .edit-section, .edit-form {
-  background-color: #FEFCF8;
-  border-radius: 20px;
+  background-color: #fefefe;
+  border-radius: 12px;
   padding: 18px;
   margin-top: 20px;
-  border: 1px solid #E6E1D8;
+  border: 1px solid var(--border-light);
 }
 
-/* Responsive Table for Mobile */
+/* 响应式 */
 @media (max-width: 600px) {
   body {
     padding: 12px;
+  }
+  .container {
+    padding: 0 10px;
+  }
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  nav a {
+    padding: 10px 16px;
+    font-size: 0.9rem;
   }
   table, thead, tbody, th, td, tr {
     display: block;
@@ -170,20 +214,20 @@ label {
   }
   tr {
     margin-bottom: 16px;
-    border: 1px solid #E6E1D8;
-    border-radius: 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
     overflow: hidden;
   }
   td {
     display: flex;
     justify-content: space-between;
     padding: 8px 12px;
-    border-bottom: 1px solid #F0EDE6;
+    border-bottom: 1px solid #f0f0f0;
   }
   td:before {
     content: attr(data-label);
     font-weight: 600;
     width: 40%;
-    color: var(--taupe);
+    color: var(--text-muted);
   }
 }
