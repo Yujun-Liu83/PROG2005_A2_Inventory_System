@@ -1,43 +1,189 @@
-/* Global styles */
-/* Global base styles for the entire application */
+/* Morandi Color Palette - Main Theme Colors */
+:root {
+  --sage: #9CAF9A;      /* Sage Green */
+  --dusty-pink: #D4B8B4; /* Dusty Pink */
+  --warm-gray: #C4C2C0;  /* Warm Gray */
+  --olive: #B1B89D;      /* Olive Green */
+  --taupe: #B7A99A;      /* Taupe */
+  --off-white: #F5F2EB;  /* Off White */
+  --charcoal: #4A4A4A;   /* Charcoal Text */
+}
+
+/* Global Body Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f8f9fa;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background-color: var(--off-white);
+  color: var(--charcoal);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: var(--sage);
+  padding: 12px 20px;
+  border-radius: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 24px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+nav a:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+/* Card Container (Used for Form Sections) */
+.card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #E8E5DF;
+}
+
+/* Data Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+th {
+  background-color: var(--taupe);
+  color: white;
+  font-weight: 600;
+  padding: 12px 10px;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid #EBE7E0;
+  background-color: white;
+}
+tr:hover td {
+  background-color: #F9F7F3;
+}
+
+/* Buttons */
+button {
+  background-color: var(--warm-gray);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #3E3A39;
+  font-weight: 500;
+}
+button:hover {
+  background-color: var(--sage);
+  color: white;
+  transform: translateY(-1px);
+}
+button.danger {
+  background-color: #E2C2C0; /* Soft Red */
+}
+button.danger:hover {
+  background-color: #D1A8A5;
+  color: white;
+}
+button.primary {
+  background-color: var(--olive);
+  color: white;
+}
+button.primary:hover {
+  background-color: #9DAF87;
+}
+
+/* Form Elements */
+input, select {
+  padding: 8px 12px;
+  border-radius: 30px;
+  border: 1px solid #DCD7CF;
+  background-color: white;
+  font-size: 0.9rem;
+  outline: none;
+  transition: 0.2s;
+}
+input:focus, select:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 2px rgba(156, 175, 154, 0.2);
+}
+label {
+  margin-right: 12px;
+  font-weight: 500;
+}
+
+/* Message Alerts */
+.message {
+  padding: 10px 18px;
+  border-radius: 40px;
+  margin: 16px 0;
+  font-weight: 500;
+}
+.success {
+  background-color: #E2EFDA;
+  color: #4A6442;
+  border-left: 4px solid var(--sage);
+}
+.error {
+  background-color: #F3E2E0;
+  color: #A55B56;
+  border-left: 4px solid var(--dusty-pink);
+}
+
+/* Layout Helpers */
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+.edit-section, .edit-form {
+  background-color: #FEFCF8;
+  border-radius: 20px;
+  padding: 18px;
+  margin-top: 20px;
+  border: 1px solid #E6E1D8;
+}
+
+/* Responsive Table for Mobile */
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
   }
-  
-  /* Navigation bar container styling */
-  nav {
-    background-color: #007bff;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
+  table, thead, tbody, th, td, tr {
+    display: block;
   }
-  
-  /* Navigation link text styling */
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-weight: bold;
+  thead {
+    display: none;
   }
-  
-  /* Hover effect for navigation links */
-  nav a:hover {
-    text-decoration: underline;
+  tr {
+    margin-bottom: 16px;
+    border: 1px solid #E6E1D8;
+    border-radius: 16px;
+    overflow: hidden;
   }
-  
-  /* Responsive styles for mobile devices (screen width ≤ 600px) */
-  @media (max-width: 600px) {
-    /* Reduce body padding on small screens */
-    body {
-      padding: 10px;
-    }
-  
-    /* Adjust navigation links for mobile layout */
-    nav a {
-      display: inline-block;
-      margin: 5px 10px 5px 0;
-    }
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #F0EDE6;
   }
+  td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    width: 40%;
+    color: var(--taupe);
+  }
+}

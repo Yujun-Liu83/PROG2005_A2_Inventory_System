@@ -1,11 +1,12 @@
+<!-- Inventory Management Main Page -->
 <h2>Inventory Management</h2>
 
-<!-- Feedback message display -->
+<!-- Status Message Display -->
 <div *ngIf="message" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'" class="message">
   {{ message }}
 </div>
 
-<!-- Display all inventory items -->
+<!-- Display All Items Table -->
 <h3>All Items</h3>
 <div class="table-responsive">
   <table>
@@ -23,7 +24,7 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Loop through all items and display in table rows -->
+      <!-- Loop through all items and render table rows -->
       <tr *ngFor="let item of allItems">
         <td data-label="ID">{{ item.id }}</td>
         <td data-label="Name">{{ item.name }}</td>
@@ -33,21 +34,19 @@
         <td data-label="Supplier">{{ item.supplier }}</td>
         <td data-label="Stock">{{ item.stockStatus }}</td>
         <td data-label="Popular">{{ item.isPopular ? 'Yes' : 'No' }}</td>
-        <!-- Delete button triggers delete function -->
         <td data-label="Action">
-          <button (click)="deleteItem(item.name)">Delete</button>
+          <button class="danger" (click)="deleteItem(item.name)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<!-- Form to add new inventory item -->
+<!-- Add New Item Form -->
 <h3>Add New Item</h3>
 <form (ngSubmit)="addItem()" class="form-grid">
   <label>Name: <input type="text" [(ngModel)]="newItem.name" name="name" required></label>
-  <label>
-    Category:
+  <label>Category:
     <select [(ngModel)]="newItem.category" name="category">
       <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
     </select>
@@ -55,31 +54,28 @@
   <label>Quantity: <input type="number" [(ngModel)]="newItem.quantity" name="quantity" required></label>
   <label>Price: <input type="number" step="0.01" [(ngModel)]="newItem.price" name="price" required></label>
   <label>Supplier: <input type="text" [(ngModel)]="newItem.supplier" name="supplier" required></label>
-  <label>
-    Stock Status:
+  <label>Stock Status:
     <select [(ngModel)]="newItem.stockStatus" name="stockStatus">
       <option *ngFor="let status of stockStatuses" [value]="status">{{ status }}</option>
     </select>
   </label>
   <label>Popular: <input type="checkbox" [(ngModel)]="newItem.isPopular" name="isPopular"></label>
   <label>Comments: <input type="text" [(ngModel)]="newItem.comments" name="comments"></label>
-  <button type="submit">Add Item</button>
+  <button type="submit" class="primary">Add Item</button>
 </form>
 
-<!-- Section to edit existing item by searching its name -->
+<!-- Edit Item Section -->
 <h3>Edit Item by Name</h3>
 <div class="edit-section">
   <label>Item Name to Edit: <input type="text" [(ngModel)]="editTargetName" placeholder="Enter current name"></label>
-  <!-- Load item data into edit form -->
-  <button (click)="prepareEdit()">Load Data</button>
+  <button class="primary" (click)="prepareEdit()">Load Data</button>
 </div>
 
-<!-- Edit form only visible when edit data is loaded -->
+<!-- Edit Form (Visible only when item is loaded) -->
 <div *ngIf="editData.name" class="edit-form">
   <h4>Edit Details for "{{ editTargetName }}"</h4>
   <label>New Name: <input type="text" [(ngModel)]="editData.name"></label>
-  <label>
-    Category:
+  <label>Category:
     <select [(ngModel)]="editData.category">
       <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
     </select>
@@ -87,14 +83,12 @@
   <label>Quantity: <input type="number" [(ngModel)]="editData.quantity"></label>
   <label>Price: <input type="number" step="0.01" [(ngModel)]="editData.price"></label>
   <label>Supplier: <input type="text" [(ngModel)]="editData.supplier"></label>
-  <label>
-    Stock Status:
+  <label>Stock Status:
     <select [(ngModel)]="editData.stockStatus">
       <option *ngFor="let status of stockStatuses" [value]="status">{{ status }}</option>
     </select>
   </label>
   <label>Popular: <input type="checkbox" [(ngModel)]="editData.isPopular"></label>
   <label>Comments: <input type="text" [(ngModel)]="editData.comments"></label>
-  <!-- Save updated item data -->
-  <button (click)="updateItem()">Save Changes</button>
+  <button class="primary" (click)="updateItem()">Save Changes</button>
 </div>
