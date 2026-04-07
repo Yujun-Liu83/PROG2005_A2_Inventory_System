@@ -1,32 +1,96 @@
-<!-- Page title for popular items section -->
 <h2>Popular Items</h2>
 
-<!-- Display message when there are no popular items -->
-<div *ngIf="popularItems.length === 0" class="no-popular">
-  No popular items found.
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-number">{{ totalPopularItems }}</div>
+    <div class="stat-label">Total Popular Items</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ totalRevenue | currency }}</div>
+    <div class="stat-label">Total Revenue (Top 2)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ avgStars | number:'1.1-1' }} ★</div>
+    <div class="stat-label">Average Rating</div>
+  </div>
 </div>
 
-<!-- Display responsive table when popular items exist -->
-<div *ngIf="popularItems.length > 0" class="table-responsive">
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Supplier</th>
-        <th>Comments</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Loop through popular items and render each item in a table row -->
-      <tr *ngFor="let item of popularItems">
-        <td data-label="Name">{{ item.name }}</td>
-        <td data-label="Category">{{ item.category }}</td>
-        <td data-label="Price">{{ item.price | currency }}</td>
-        <td data-label="Supplier">{{ item.supplier }}</td>
-        <td data-label="Comments">{{ item.comments }}</td>
-      </tr>
-    </tbody>
-  </table>
+
+<div class="monthly-hot">
+  <h3>🔥 Monthly Hot Picks</h3>
+  <div class="cards-container">
+    <div *ngFor="let item of monthlyHot" class="hot-card" (click)="toggleDetails(item)">
+      <img [src]="item.image" alt="{{ item.name }}">
+      <div class="card-info">
+        <h4>{{ item.name }}</h4>
+        <div class="stars">
+          <span *ngFor="let star of getStarArray(item.stars)" class="star">★</span>
+          <span *ngFor="let empty of getStarArray(5 - item.stars)" class="star empty">☆</span>
+        </div>
+        <p class="month">{{ item.month }}</p>
+        <p class="sales-badge">{{ item.salesCount }} units sold</p>
+      </div>
+      <div class="expand-details" *ngIf="item.expanded">
+        <div class="detail-content">
+          <p><strong>Revenue:</strong> {{ item.details.revenue }}</p>
+          <p><strong>Description:</strong> {{ item.details.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="sales-breakdown">
+  <h3>📊 Sales Breakdown (Top 2)</h3>
+  <div class="progress-list">
+    <div *ngFor="let data of salesData" class="progress-item">
+      <div class="progress-label">{{ data.name }}</div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" [style.width.%]="data.percent"></div>
+      </div>
+      <div class="progress-percent">{{ data.percent | number:'1.0-0' }}%</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="popular-table-section">
+  <h3>📋 All Popular Items (from database)</h3>
+  <div *ngIf="popularItems.length === 0" class="no-popular">
+    No popular items found. Mark items as "Popular" in Inventory.
+  </div>
+  <div *ngIf="popularItems.length > 0" class="table-responsive">
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Category</th><th>Price</th><th>Supplier</th><th>Comments</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of popularItems">
+          <td data-label="Name">{{ item.name }}</td>
+          <td data-label="Category">{{ item.category }}</td>
+          <td data-label="Price">{{ item.price | currency }}</td>
+          <td data-label="Supplier">{{ item.supplier }}</td>
+          <td data-label="Comments">{{ item.comments || '—' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="reviews-section">
+  <h3>💬 Customer Reviews</h3>
+  <div class="reviews-list">
+    <div *ngFor="let review of reviews" class="review-card">
+      <p class="review-text">“{{ review.text }}”</p>
+      <p class="review-author">— {{ review.author }}</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="promo">
+  <p>🌟 Love these items? Check the <strong>Inventory</strong> page to add more popular products!</p>
 </div>

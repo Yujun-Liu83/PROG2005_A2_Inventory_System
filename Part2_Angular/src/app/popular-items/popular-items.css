@@ -1,38 +1,295 @@
-/* Style for "no popular items" message: gray italic text */
+
+h2, h3 {
+  background: linear-gradient(120deg, #f8f9fa, #e9ecef);
+  border-radius: 40px;
+  padding: 10px 24px;
+  width: fit-content;
+  margin: 24px auto 20px auto;
+  color: #2c7da0;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid #dee2e6;
+}
+
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.stat-card {
+  background: white;
+  border-radius: 20px;
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 160px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: #2c7da0;
+}
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c7da0;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 6px;
+}
+
+
+.monthly-hot {
+  background: white;
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.hot-card {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 320px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+}
+.hot-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  border-color: #2c7da0;
+}
+.hot-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card-info {
+  padding: 16px;
+  text-align: center;
+}
+.card-info h4 {
+  margin: 0 0 8px;
+  color: #2c3e50;
+}
+.stars {
+  margin: 8px 0;
+}
+.star {
+  color: #f5b042;
+  font-size: 1.2rem;
+  margin-right: 2px;
+}
+.star.empty {
+  color: #ddd;
+}
+.month, .sales-badge {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 6px;
+}
+.sales-badge {
+  background: #e9ecef;
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 30px;
+}
+.expand-details {
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.85rem;
+}
+.detail-content p {
+  margin: 6px 0;
+}
+
+
+.sales-breakdown {
+  background: white;
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 40px;
+  border: 1px solid #e9ecef;
+}
+.progress-list {
+  margin-top: 20px;
+}
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+.progress-label {
+  width: 120px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+.progress-bar-container {
+  flex: 1;
+  height: 24px;
+  background-color: #e9ecef;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background-color: #2c7da0;
+  width: 0%;
+  transition: width 0.3s;
+  border-radius: 30px;
+}
+.progress-percent {
+  width: 50px;
+  font-weight: 500;
+  color: #2c7da0;
+}
+
+
+.popular-table-section {
+  background: white;
+  border-radius: 24px;
+  padding: 10px 20px 20px;
+  margin-bottom: 40px;
+  border: 1px solid #e9ecef;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+}
+th {
+  background-color: #e9ecef;
+  color: #2c3e50;
+  font-weight: 600;
+  padding: 12px 10px;
+  border-bottom: 1px solid #ced4da;
+  text-align: left;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+tr:hover td {
+  background-color: #f8f9fa;
+}
 .no-popular {
-    color: #666;
-    font-style: italic;
+  text-align: center;
+  padding: 30px;
+  color: #6c757d;
+}
+
+
+.reviews-section {
+  background: white;
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 1px solid #e9ecef;
+}
+.reviews-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.review-card {
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 16px;
+  width: 280px;
+  transition: transform 0.2s;
+}
+.review-card:hover {
+  transform: translateY(-4px);
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.review-text {
+  font-style: italic;
+  margin: 0 0 8px;
+  color: #2c3e50;
+}
+.review-author {
+  font-size: 0.8rem;
+  color: #6c757d;
+  text-align: right;
+}
+
+
+.promo {
+  background: linear-gradient(135deg, #e9ecef, #ffffff);
+  text-align: center;
+  padding: 20px;
+  border-radius: 60px;
+  margin-top: 20px;
+  border: 1px solid #dee2e6;
+  font-size: 1rem;
+}
+
+
+@media (max-width: 700px) {
+  .stats-row {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  /* Responsive styles for mobile devices (screen width ≤ 600px) */
-  @media (max-width: 600px) {
-    /* Change table elements to block layout for mobile adaptation */
-    table, thead, tbody, th, td, tr {
-      display: block;
-    }
-  
-    /* Hide table header on small screens */
-    thead tr { display: none; }
-  
-    /* Add bottom margin and border for each table row */
-    tr {
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-    }
-  
-    /* Table cell layout: flex with space between label and value */
-    td {
-      display: flex;
-      justify-content: space-between;
-      padding: 5px;
-      border: none;
-      border-bottom: 1px solid #eee;
-    }
-  
-    /* Show data label as field name before cell content */
-    td:before {
-      content: attr(data-label);
-      font-weight: bold;
-      width: 40%;
-    }
+  .hot-card {
+    width: 100%;
+    max-width: 320px;
   }
+  .progress-item {
+    flex-wrap: wrap;
+  }
+  .progress-label {
+    width: 100%;
+  }
+  .progress-bar-container {
+    width: 100%;
+  }
+  .reviews-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .review-card {
+    width: 100%;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead { display: none; }
+  tr {
+    margin-bottom: 16px;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+  }
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    width: 40%;
+    color: #2c7da0;
+  }
+}
