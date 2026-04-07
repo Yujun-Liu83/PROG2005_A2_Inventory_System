@@ -1,18 +1,42 @@
-<div class="hero">
-    <h1>📦 Inventory Manager</h1>
-    <p class="subtitle">Elegant, efficient, and effortlessly organized.</p>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>📋 Full CRUD</h3>
-        <p>Add, edit, delete items — all with visual feedback.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🔍 Smart Search</h3>
-        <p>Filter by name, category, or stock status.</p>
-      </div>
-      <div class="feature-card">
-        <h3>⭐ Popular Items</h3>
-        <p>Spot your bestsellers at a glance.</p>
-      </div>
+<div class="welcome-section">
+    <h1>📦 Inventory Dashboard</h1>
+    <p class="tagline">Efficiently manage your stock, track popular items, and stay organized.</p>
+  </div>
+  
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">{{ totalItems }}</div>
+      <div class="stat-label">Total Products</div>
     </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ lowStockCount }}</div>
+      <div class="stat-label">Low Stock (< 5)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ popularCount }}</div>
+      <div class="stat-label">Popular Items</div>
+    </div>
+  </div>
+  
+  <div class="feature-showcase">
+    <div class="feature-card">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155220c8d6?w=400&h=250&fit=crop" alt="Inventory management">
+      <h3>Full CRUD Operations</h3>
+      <p>Add, edit, and delete items with ease. Real-time validation and user-friendly forms.</p>
+    </div>
+    <div class="feature-card">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Search and filter">
+      <h3>Smart Search & Filter</h3>
+      <p>Find items by name, category, or stock status instantly.</p>
+    </div>
+    <div class="feature-card">
+      <img src="https://images.unsplash.com/photo-1556742049-0cf6f065c0f6?w=400&h=250&fit=crop" alt="Analytics">
+      <h3>Popular Items Spotlight</h3>
+      <p>Identify your best-selling products at a glance.</p>
+    </div>
+  </div>
+  
+  <div class="cta">
+    <p>Ready to manage your inventory?</p>
+    <button class="primary" routerLink="/inventory">Go to Inventory →</button>
   </div>

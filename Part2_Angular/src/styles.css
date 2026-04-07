@@ -1,13 +1,13 @@
-/* 专业商务配色：白色背景，蓝色主色调，绿色辅助，黑色文字 */
+
 :root {
-  --primary-blue: #2c7da0;   /* 主蓝色 */
-  --primary-dark: #1f5068;   /* 深蓝（悬停） */
-  --success-green: #2e7d32;  /* 绿色（成功按钮） */
-  --danger-red: #c62828;      /* 红色（删除） */
-  --light-bg: #f8f9fa;        /* 浅灰背景 */
-  --border-light: #dee2e6;    /* 边框浅灰 */
-  --text-dark: #212529;       /* 深色文字 */
-  --text-muted: #6c757d;      /* 灰色文字 */
+  --primary-blue: #2c7da0;   
+  --primary-dark: #1f5068;   
+  --success-green: #2e7d32;  
+  --danger-red: #c62828;      
+  --light-bg: #f8f9fa;       
+  --border-light: #dee2e6;    
+  --text-dark: #212529;       
+  --text-muted: #6c757d;      
 }
 
 * {
@@ -26,7 +26,6 @@ body {
   align-items: center;
 }
 
-/* 主要内容容器 */
 .container {
   max-width: 1400px;
   width: 100%;
@@ -34,7 +33,6 @@ body {
   padding: 0 20px;
 }
 
-/* 导航栏 */
 nav {
   background-color: white;
   padding: 0;
@@ -106,7 +104,7 @@ tr:hover td {
   background-color: #f8f9fa;
 }
 
-/* 按钮 */
+
 button {
   border: none;
   padding: 6px 14px;
@@ -138,7 +136,7 @@ button.primary:hover {
   background-color: var(--primary-dark);
 }
 
-/* 表单元素 */
+
 input, select {
   padding: 8px 12px;
   border-radius: 6px;
@@ -157,7 +155,7 @@ label {
   font-weight: 500;
 }
 
-/* 消息提示 */
+
 .message {
   padding: 10px 18px;
   border-radius: 8px;
@@ -175,7 +173,7 @@ label {
   border-left: 4px solid var(--danger-red);
 }
 
-/* 表单网格 */
+
 .form-grid {
   display: flex;
   flex-wrap: wrap;
@@ -190,7 +188,7 @@ label {
   border: 1px solid var(--border-light);
 }
 
-/* 响应式 */
+
 @media (max-width: 600px) {
   body {
     padding: 12px;
