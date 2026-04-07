@@ -36,12 +36,13 @@ body {
 nav {
   background-color: white;
   padding: 0;
-  margin-bottom: 30px;
+  margin: 0 auto 30px auto;   
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 1400px;
+  width: 800px;               
+  max-width: 90vw;            
   display: flex;
+  justify-content: center;    
   gap: 4px;
   border-bottom: 1px solid var(--border-light);
 }
@@ -49,12 +50,13 @@ nav {
 nav a {
   color: var(--text-dark);
   text-decoration: none;
-  padding: 14px 24px;
+  padding: 12px 20px;
   font-weight: 500;
   font-size: 1rem;
   transition: all 0.2s ease;
   border-bottom: 2px solid transparent;
 }
+
 
 nav a:hover {
   background-color: #f1f3f5;
@@ -62,14 +64,14 @@ nav a:hover {
   border-bottom-color: var(--primary-blue);
 }
 
-/* 当前激活的链接 */
+
 nav a.active-link {
   color: var(--primary-blue);
   border-bottom-color: var(--primary-blue);
   background-color: #e9ecef;
 }
 
-/* 卡片样式 */
+
 .card {
   background-color: white;
   border-radius: 12px;
@@ -79,7 +81,7 @@ nav a.active-link {
   border: 1px solid var(--border-light);
 }
 
-/* 表格 */
+
 table {
   width: 100%;
   border-collapse: collapse;
