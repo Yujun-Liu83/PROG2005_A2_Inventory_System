@@ -1,50 +1,76 @@
-<!-- Page title for item search section -->
 <h2>Search Items</h2>
 
-<!-- Search and filter controls container -->
+
+<div class="stats-row" *ngIf="searchResults.length > 0">
+  <div class="stat-card">
+    <div class="stat-number">{{ totalCount }}</div>
+    <div class="stat-label">Items Found</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ totalValue | currency }}</div>
+    <div class="stat-label">Total Inventory Value</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ avgPrice | currency }}</div>
+    <div class="stat-label">Average Price</div>
+  </div>
+</div>
+
+
+<div class="quick-filters">
+  <span class="quick-label">Quick filter by category:</span>
+  <button *ngFor="let cat of categories" class="quick-btn" (click)="quickFilter(cat)">{{ cat }}</button>
+  <button class="quick-btn reset" (click)="resetFilters()">Reset All</button>
+</div>
+
+
 <div class="search-filters">
-  <!-- Input field for searching by item name with two-way binding -->
-  <input type="text" [(ngModel)]="searchTerm" placeholder="Enter item name" class="search-input">
-  
-  <!-- Dropdown for filtering items by category -->
-  <select [(ngModel)]="filterCategory" class="filter-select">
-    <option value="">All Categories</option>
-    <!-- Loop through category array to generate options -->
-    <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
-  </select>
-  
-  <!-- Dropdown for filtering items by stock status -->
-  <select [(ngModel)]="filterStock" class="filter-select">
-    <option value="">All Stock Status</option>
-    <!-- Loop through stock status array to generate options -->
-    <option *ngFor="let status of stockStatuses" [value]="status">{{ status }}</option>
-  </select>
-  
-  <!-- Button to trigger search and filter function -->
-  <button (click)="onSearch()">Search</button>
+  <div class="filter-group">
+    <label>Item Name:</label>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Enter name...">
+  </div>
+  <div class="filter-group">
+    <label>Category:</label>
+    <select [(ngModel)]="filterCategory">
+      <option value="">All</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Stock Status:</label>
+    <select [(ngModel)]="filterStock">
+      <option value="">All</option>
+      <option *ngFor="let status of stockStatuses" [value]="status">{{ status }}</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Price Range:</label>
+    <select [(ngModel)]="priceRange">
+      <option *ngFor="let range of priceRanges" [value]="range.value">{{ range.label }}</option>
+    </select>
+  </div>
+  <div class="filter-group checkbox-group">
+    <label>
+      <input type="checkbox" [(ngModel)]="hasComments"> Only with comments
+    </label>
+  </div>
+  <div class="filter-group">
+    <button class="primary" (click)="onSearch()">Search</button>
+  </div>
 </div>
 
-<!-- Message displayed when no search results are found -->
-<div *ngIf="searchResults.length === 0 && searchTerm" class="no-results">
-  No items found.
+
+<div *ngIf="searchResults.length === 0 && (searchTerm || filterCategory || filterStock || priceRange || hasComments)" class="no-results">
+  No items match your criteria.
 </div>
 
-<!-- Table to display search results when results exist -->
+
 <div *ngIf="searchResults.length > 0" class="table-responsive">
   <table>
     <thead>
-      <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Supplier</th>
-        <th>Stock</th>
-        <th>Popular</th>
-      </tr>
+      <tr><th>Name</th><th>Category</th><th>Quantity</th><th>Price</th><th>Supplier</th><th>Stock</th><th>Popular</th><th>Comments</th></tr>
     </thead>
     <tbody>
-      <!-- Loop through search results and display each item in a row -->
       <tr *ngFor="let item of searchResults">
         <td data-label="Name">{{ item.name }}</td>
         <td data-label="Category">{{ item.category }}</td>
@@ -53,6 +79,7 @@
         <td data-label="Supplier">{{ item.supplier }}</td>
         <td data-label="Stock">{{ item.stockStatus }}</td>
         <td data-label="Popular">{{ item.isPopular ? 'Yes' : 'No' }}</td>
+        <td data-label="Comments">{{ item.comments || '—' }}</td>
       </tr>
     </tbody>
   </table>
