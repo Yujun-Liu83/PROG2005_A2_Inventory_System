@@ -1,7 +1,7 @@
 <h2>Search Items</h2>
 
 
-<div class="stats-row" *ngIf="searchResults.length > 0">
+<div class="stats-row">
   <div class="stat-card">
     <div class="stat-number">{{ totalCount }}</div>
     <div class="stat-label">Items Found</div>
@@ -19,7 +19,7 @@
 
 <div class="quick-filters">
   <span class="quick-label">Quick filter by category:</span>
-  <button *ngFor="let cat of categories" class="quick-btn" (click)="quickFilter(cat)">{{ cat }}</button>
+  <button *ngFor="let cat of categories" class="quick-btn" (click)="filterCategory = cat; onSearch()">{{ cat }}</button>
   <button class="quick-btn reset" (click)="resetFilters()">Reset All</button>
 </div>
 
@@ -31,36 +31,54 @@
   </div>
   <div class="filter-group">
     <label>Category:</label>
-    <select [(ngModel)]="filterCategory">
+    <select [(ngModel)]="filterCategory" (change)="onSearch()">
       <option value="">All</option>
       <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
     </select>
   </div>
   <div class="filter-group">
     <label>Stock Status:</label>
-    <select [(ngModel)]="filterStock">
+    <select [(ngModel)]="filterStock" (change)="onSearch()">
       <option value="">All</option>
       <option *ngFor="let status of stockStatuses" [value]="status">{{ status }}</option>
     </select>
   </div>
   <div class="filter-group">
     <label>Price Range:</label>
-    <select [(ngModel)]="priceRange">
+    <select [(ngModel)]="priceRange" (change)="onSearch()">
       <option *ngFor="let range of priceRanges" [value]="range.value">{{ range.label }}</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Supplier:</label>
+    <select [(ngModel)]="filterSupplier" (change)="onSearch()">
+      <option value="">All</option>
+      <option *ngFor="let sup of suppliers" [value]="sup">{{ sup }}</option>
     </select>
   </div>
   <div class="filter-group checkbox-group">
     <label>
-      <input type="checkbox" [(ngModel)]="hasComments"> Only with comments
+      <input type="checkbox" [(ngModel)]="hasComments" (change)="onSearch()"> Only with comments
+    </label>
+  </div>
+  <div class="filter-group checkbox-group">
+    <label>
+      <input type="checkbox" [(ngModel)]="minQuantity" (change)="onSearch()"> In stock (quantity ≥ 1)
+    </label>
+  </div>
+  <div class="filter-group checkbox-group star-filter">
+    <label>
+      <input type="checkbox" [(ngModel)]="onlyPopular" (change)="onSearch()"> ⭐ Only popular items
     </label>
   </div>
   <div class="filter-group">
     <button class="primary" (click)="onSearch()">Search</button>
+    <button class="secondary" (click)="resetFilters()">Reset</button>
   </div>
 </div>
 
 
-<div *ngIf="searchResults.length === 0 && (searchTerm || filterCategory || filterStock || priceRange || hasComments)" class="no-results">
+<div *ngIf="searchResults.length === 0 && (searchTerm || filterCategory || filterStock || priceRange || hasComments || filterSupplier || minQuantity || onlyPopular)" class="no-results">
   No items match your criteria.
 </div>
 
@@ -78,7 +96,7 @@
         <td data-label="Price">{{ item.price | currency }}</td>
         <td data-label="Supplier">{{ item.supplier }}</td>
         <td data-label="Stock">{{ item.stockStatus }}</td>
-        <td data-label="Popular">{{ item.isPopular ? 'Yes' : 'No' }}</td>
+        <td data-label="Popular">{{ item.isPopular ? '⭐' : '' }}</td>
         <td data-label="Comments">{{ item.comments || '—' }}</td>
       </tr>
     </tbody>

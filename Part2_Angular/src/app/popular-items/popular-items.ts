@@ -40,18 +40,18 @@ export class PopularItemsComponent implements OnInit {
     }
   ];
 
-  // 销售占比数据（基于 monthlyHot 的销量）
+  
   salesData = [
     { name: 'Wooden Desk', sales: 142, percent: 0 },
     { name: 'MacBook Pro', sales: 89, percent: 0 }
   ];
 
-  // 统计摘要
+ 
   totalPopularItems = 0;
   totalRevenue = 0;
   avgStars = 0;
 
-  // 精选评论
+  
   reviews = [
     { product: 'MacBook Pro', text: 'Amazing performance, worth every penny!', author: 'Alex J.' },
     { product: 'Wooden Desk', text: 'Sturdy and beautiful, transformed my home office.', author: 'Sam K.' }
@@ -74,7 +74,7 @@ export class PopularItemsComponent implements OnInit {
     const totalStars = this.monthlyHot.reduce((sum, item) => sum + item.stars, 0);
     this.avgStars = totalStars / this.monthlyHot.length;
 
-    // 计算销售占比
+    
     this.salesData.forEach(data => {
       const item = this.monthlyHot.find(h => h.name === data.name);
       if (item) {

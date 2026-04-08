@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Inventory } from '../inventory';
@@ -11,19 +11,22 @@ import { Item } from '../item.model';
   templateUrl: './search.html',
   styleUrls: ['./search.css']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   searchTerm = '';
   filterCategory = '';
   filterStock = '';
   priceRange = '';
   hasComments = false;
-  searchResults: Item[] = [];
+  filterSupplier = '';        
+  minQuantity = false;       
+  onlyPopular = false;       
 
-  
+  searchResults: Item[] = [];
   totalCount = 0;
   totalValue = 0;
   avgPrice = 0;
 
+  
   categories = ['Electronics', 'Furniture', 'Clothing', 'Tools', 'Misc'];
   stockStatuses = ['In Stock', 'Out of Stock', 'Backorder'];
   priceRanges = [
@@ -33,12 +36,24 @@ export class SearchComponent {
     { label: '$100 - $500', value: '100-500' },
     { label: 'Over $500', value: '500+' }
   ];
+  suppliers: string[] = [];   
 
   constructor(private inventoryService: Inventory) {}
 
+  ngOnInit(): void {
+    this.loadSuppliers();
+    this.onSearch(); 
+  }
+
+  loadSuppliers(): void {
+    const allItems = this.inventoryService.getAllItems();
+    const uniqueSuppliers = new Set(allItems.map(item => item.supplier));
+    this.suppliers = Array.from(uniqueSuppliers).sort();
+  }
+
   onSearch(): void {
     let results = this.inventoryService.searchByName(this.searchTerm);
-    
+
     if (this.filterCategory) {
       results = results.filter(item => item.category === this.filterCategory);
     }
@@ -60,7 +75,16 @@ export class SearchComponent {
     if (this.hasComments) {
       results = results.filter(item => item.comments && item.comments.trim().length > 0);
     }
-    
+    if (this.filterSupplier) {
+      results = results.filter(item => item.supplier === this.filterSupplier);
+    }
+    if (this.minQuantity) {
+      results = results.filter(item => item.quantity >= 1);
+    }
+    if (this.onlyPopular) {
+      results = results.filter(item => item.isPopular === true);
+    }
+
     this.searchResults = results;
     this.calculateStats();
   }
@@ -77,11 +101,9 @@ export class SearchComponent {
     this.filterStock = '';
     this.priceRange = '';
     this.hasComments = false;
-    this.onSearch(); 
-  }
-
-  quickFilter(category: string): void {
-    this.filterCategory = category;
+    this.filterSupplier = '';
+    this.minQuantity = false;
+    this.onlyPopular = false;
     this.onSearch();
   }
 }
