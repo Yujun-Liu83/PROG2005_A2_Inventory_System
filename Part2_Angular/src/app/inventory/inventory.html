@@ -1,31 +1,47 @@
-<!-- Inventory Management Main Page -->
 <h2>Inventory Management</h2>
 
-<!-- Status Message Display -->
+
 <div *ngIf="message" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'" class="message">
   {{ message }}
 </div>
 
-<!-- Display All Items Table -->
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-number">{{ totalItems }}</div>
+    <div class="stat-label">Total Items</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ lowStockCount }}</div>
+    <div class="stat-label">Low Stock (<5)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ totalValue | currency }}</div>
+    <div class="stat-label">Total Value</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{ popularCount }}</div>
+    <div class="stat-label">Popular Items</div>
+  </div>
+</div>
+
+
+<div class="toolbar">
+  <div class="search-box">
+    <input type="text" [(ngModel)]="searchFilter" (input)="applyFilter()" placeholder="🔍 Filter by name, category, supplier...">
+  </div>
+  <button class="export-btn" (click)="exportData()">📎 Export as JSON</button>
+</div>
+
+
 <h3>All Items</h3>
 <div class="table-responsive">
   <table>
     <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Supplier</th>
-        <th>Stock</th>
-        <th>Popular</th>
-        <th>Action</th>
-      </tr>
+      <tr><th>ID</th><th>Name</th><th>Category</th><th>Quantity</th><th>Price</th><th>Supplier</th><th>Stock</th><th>Popular</th><th>Action</th></tr>
     </thead>
     <tbody>
-      <!-- Loop through all items and render table rows -->
-      <tr *ngFor="let item of allItems">
+      <tr *ngFor="let item of displayItems">
         <td data-label="ID">{{ item.id }}</td>
         <td data-label="Name">{{ item.name }}</td>
         <td data-label="Category">{{ item.category }}</td>
@@ -33,16 +49,17 @@
         <td data-label="Price">{{ item.price | currency }}</td>
         <td data-label="Supplier">{{ item.supplier }}</td>
         <td data-label="Stock">{{ item.stockStatus }}</td>
-        <td data-label="Popular">{{ item.isPopular ? 'Yes' : 'No' }}</td>
-        <td data-label="Action">
-          <button class="danger" (click)="deleteItem(item.name)">Delete</button>
-        </td>
+        <td data-label="Popular">{{ item.isPopular ? '⭐' : '' }}</td>
+        <td data-label="Action"><button class="danger" (click)="deleteItem(item.name)">Delete</button></td>
+      </tr>
+      <tr *ngIf="displayItems.length === 0">
+        <td colspan="9" class="no-data">No items match your filter.</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<!-- Add New Item Form -->
+
 <h3>Add New Item</h3>
 <form (ngSubmit)="addItem()" class="form-grid">
   <label>Name: <input type="text" [(ngModel)]="newItem.name" name="name" required></label>
@@ -64,14 +81,12 @@
   <button type="submit" class="primary">Add Item</button>
 </form>
 
-<!-- Edit Item Section -->
+
 <h3>Edit Item by Name</h3>
 <div class="edit-section">
   <label>Item Name to Edit: <input type="text" [(ngModel)]="editTargetName" placeholder="Enter current name"></label>
   <button class="primary" (click)="prepareEdit()">Load Data</button>
 </div>
-
-<!-- Edit Form (Visible only when item is loaded) -->
 <div *ngIf="editData.name" class="edit-form">
   <h4>Edit Details for "{{ editTargetName }}"</h4>
   <label>New Name: <input type="text" [(ngModel)]="editData.name"></label>
