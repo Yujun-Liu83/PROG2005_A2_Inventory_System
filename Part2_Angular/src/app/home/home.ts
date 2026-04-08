@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Inventory } from '../inventory';
+import { Item } from '../item.model';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
   totalItems = 0;
   lowStockCount = 0;
   popularCount = 0;
+  recentItems: Item[] = [];
 
   constructor(private inventoryService: Inventory) {}
 
@@ -22,5 +24,7 @@ export class HomeComponent implements OnInit {
     this.totalItems = items.length;
     this.lowStockCount = items.filter(item => item.quantity < 5).length;
     this.popularCount = items.filter(item => item.isPopular).length;
+    
+    this.recentItems = [...items].reverse().slice(0, 4);
   }
 }

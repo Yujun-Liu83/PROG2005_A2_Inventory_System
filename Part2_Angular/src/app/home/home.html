@@ -1,7 +1,9 @@
+
 <div class="welcome-section">
     <h1>📦 Inventory Manager</h1>
     <p class="tagline">Efficiently manage your stock, track popular items, and stay organized.</p>
   </div>
+  
   
   <div class="nav-cards">
     <div class="nav-card" routerLink="/inventory">
@@ -29,4 +31,49 @@
       <h3>Help</h3>
       <p>FAQ and troubleshooting</p>
     </div>
+  </div>
+  
+ 
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-number">{{ totalItems }}</div>
+      <div class="stat-label">Total Items</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ lowStockCount }}</div>
+      <div class="stat-label">Low Stock (<5)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ popularCount }}</div>
+      <div class="stat-label">Popular Items</div>
+    </div>
+  </div>
+  
+  
+  <div class="recent-section">
+    <h3>🕒 Recently Added Items</h3>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Category</th><th>Quantity</th><th>Price</th><th>Supplier</th> </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of recentItems">
+            <td data-label="Name">{{ item.name }}</td>
+            <td data-label="Category">{{ item.category }}</td>
+            <td data-label="Quantity">{{ item.quantity }}</td>
+            <td data-label="Price">{{ item.price | currency }}</td>
+            <td data-label="Supplier">{{ item.supplier }}</td>
+          </tr>
+          <tr *ngIf="recentItems.length === 0">
+            <td colspan="5" class="no-data">No items available. Add some in Inventory.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+  <div class="system-note">
+    <p>💡 <strong>Note:</strong> All data is stored only in your browser’s memory. Refreshing the page will reset to default sample data.</p>
   </div>
