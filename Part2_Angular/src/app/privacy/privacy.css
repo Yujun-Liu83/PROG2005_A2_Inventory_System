@@ -1,9 +1,233 @@
-/* Set line height for better readability in unordered lists */
-ul {
-    line-height: 1.6;
+
+.privacy-hero {
+  background: linear-gradient(135deg, #e9ecef 0%, #ffffff 100%);
+  border-radius: 32px;
+  padding: 40px 20px;
+  margin-bottom: 40px;
+  position: relative;
+  text-align: center;
+  border: 1px solid #dee2e6;
+}
+.hero-content h1 {
+  font-size: 2.5rem;
+  color: #2c7da0;
+  margin-bottom: 12px;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  color: #495057;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.stat-card {
+  background: white;
+  border-radius: 24px;
+  padding: 20px 28px;
+  text-align: center;
+  min-width: 160px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: #2c7da0;
+}
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c7da0;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 6px;
+}
+
+
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.privacy-card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+  transition: all 0.2s ease;
+}
+.privacy-card:hover {
+  transform: translateY(-4px);
+  border-color: #2c7da0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.full-width {
+  grid-column: 1 / -1;
+}
+.card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+.privacy-card h3 {
+  margin: 0 0 12px;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  border-left: 3px solid #2c7da0;
+  padding-left: 12px;
+}
+.privacy-card p, .privacy-card li {
+  color: #495057;
+  line-height: 1.5;
+}
+.checklist {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 12px;
+}
+.checklist li {
+  margin-bottom: 6px;
+}
+.timeline {
+  margin-top: 16px;
+  border-left: 2px solid #2c7da0;
+  padding-left: 16px;
+}
+.timeline-item {
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+.mock-btn {
+  background: none;
+  border: 1px solid #2c7da0;
+  color: #2c7da0;
+  padding: 6px 12px;
+  border-radius: 30px;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.mock-btn:hover {
+  background-color: #2c7da0;
+  color: white;
+}
+.effective-date {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+
+.faq-section {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 40px;
+  border: 1px solid #e9ecef;
+}
+.faq-section h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #2c7da0;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.faq-item {
+  border-bottom: 1px solid #e9ecef;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: #2c3e50;
+}
+.faq-question:hover {
+  color: #2c7da0;
+}
+.toggle-icon {
+  font-size: 1.2rem;
+}
+.faq-answer {
+  padding: 0 0 12px 0;
+  color: #495057;
+  line-height: 1.5;
+}
+
+
+.contact-privacy {
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 24px;
+  padding: 32px;
+  margin-bottom: 24px;
+  border: 1px solid #e9ecef;
+}
+.contact-privacy h3 {
+  margin: 0 0 8px;
+  color: #2c7da0;
+}
+.contact-privacy button {
+  background-color: #2c7da0;
+  color: white;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 40px;
+  font-size: 1rem;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.contact-privacy button:hover {
+  background-color: #1f5068;
+  transform: translateY(-2px);
+}
+.email-hint {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+
+.footer-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #adb5bd;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+
+@media (max-width: 700px) {
+  .privacy-grid {
+    grid-template-columns: 1fr;
   }
-  
-  /* Add bottom margin to list items for better spacing between items */
-  li {
-    margin-bottom: 10px;
+  .stats-row {
+    flex-direction: column;
+    align-items: center;
   }
+  .privacy-hero {
+    padding: 24px 16px;
+  }
+  .faq-section {
+    padding: 20px;
+  }
+}
