@@ -1,4 +1,4 @@
-
+/* Statistics row layout */
 .stats-row {
   display: flex;
   flex-wrap: wrap;
@@ -6,6 +6,7 @@
   justify-content: center;
   margin-bottom: 30px;
 }
+/* Single statistic card */
 .stat-card {
   background: white;
   border-radius: 20px;
@@ -16,22 +17,25 @@
   border: 1px solid #e9ecef;
   transition: transform 0.2s;
 }
+/* Hover effect for stat card */
 .stat-card:hover {
   transform: translateY(-4px);
   border-color: #2c7da0;
 }
+/* Large number in stat card */
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
   color: #2c7da0;
 }
+/* Stat card label */
 .stat-label {
   font-size: 0.85rem;
   color: #6c757d;
   margin-top: 6px;
 }
 
-
+/* Quick filter button bar */
 .quick-filters {
   background: white;
   padding: 12px 20px;
@@ -44,10 +48,12 @@
   border: 1px solid #e9ecef;
   justify-content: center;
 }
+/* Quick filter label */
 .quick-label {
   font-weight: 600;
   color: #2c3e50;
 }
+/* Quick filter button */
 .quick-btn {
   background-color: #e9ecef;
   border: none;
@@ -58,21 +64,24 @@
   font-size: 0.85rem;
   color: #2c3e50;
 }
+/* Hover effect for quick filter */
 .quick-btn:hover {
   background-color: #2c7da0;
   color: white;
   transform: translateY(-2px);
 }
+/* Reset button style */
 .quick-btn.reset {
   background-color: #f8d7da;
   color: #c62828;
 }
+/* Reset button hover */
 .quick-btn.reset:hover {
   background-color: #c62828;
   color: white;
 }
 
-
+/* Advanced search filter panel */
 .search-filters {
   background: white;
   padding: 20px;
@@ -85,36 +94,43 @@
   align-items: flex-end;
   margin-bottom: 28px;
 }
+/* Filter input group */
 .filter-group {
   display: flex;
   flex-direction: column;
   min-width: 140px;
   flex: 1;
 }
+/* Filter group label */
 .filter-group label {
   font-weight: 600;
   margin-bottom: 6px;
   color: #2c3e50;
   font-size: 0.85rem;
 }
+/* Filter input and select */
 .filter-group input, .filter-group select {
   padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid #ced4da;
   background: white;
 }
+/* Checkbox filter group */
 .filter-group.checkbox-group {
   flex-direction: row;
   align-items: center;
   gap: 8px;
 }
+/* Checkbox label */
 .filter-group.checkbox-group label {
   margin-bottom: 0;
   cursor: pointer;
 }
+/* Star rating filter label */
 .star-filter label {
   color: #f5b042;
 }
+/* Primary action button */
 button.primary {
   background-color: #2c7da0;
   color: white;
@@ -126,11 +142,13 @@ button.primary {
   transition: all 0.2s;
   margin-top: 20px;
 }
+/* Primary button hover */
 button.primary:hover {
   background-color: #1f5068;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+/* Secondary button */
 button.secondary {
   background-color: #e9ecef;
   color: #2c3e50;
@@ -143,12 +161,13 @@ button.secondary {
   margin-top: 20px;
   margin-left: 8px;
 }
+/* Secondary button hover */
 button.secondary:hover {
   background-color: #dee2e6;
   transform: translateY(-2px);
 }
 
-
+/* Results data table */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -156,6 +175,7 @@ table {
   border-radius: 16px;
   overflow: hidden;
 }
+/* Table header */
 th {
   background-color: #e9ecef;
   color: #2c3e50;
@@ -164,13 +184,16 @@ th {
   border-bottom: 1px solid #ced4da;
   text-align: left;
 }
+/* Table cell */
 td {
   padding: 10px;
   border-bottom: 1px solid #e9ecef;
 }
+/* Table row hover */
 tr:hover td {
   background-color: #f8f9fa;
 }
+/* No results message */
 .no-results {
   text-align: center;
   padding: 40px;
@@ -179,7 +202,7 @@ tr:hover td {
   color: #6c757d;
 }
 
-
+/* Mobile responsive styles */
 @media (max-width: 700px) {
   .stats-row {
     flex-direction: column;
@@ -198,6 +221,7 @@ tr:hover td {
     margin-top: 8px;
     margin-left: 0;
   }
+  /* Mobile table card view */
   table, thead, tbody, th, td, tr {
     display: block;
   }

@@ -1,9 +1,11 @@
+// Import required modules and services
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Inventory } from '../inventory';
 import { Item } from '../item.model';
 
+// Component metadata
 @Component({
   selector: 'app-inventory',
   standalone: true,
@@ -11,18 +13,20 @@ import { Item } from '../item.model';
   templateUrl: './inventory.html',
   styleUrls: ['./inventory.css']
 })
-export class InventoryComponent implements OnInit {
-  allItems: Item[] = [];
-  displayItems: Item[] = [];   
-  searchFilter = '';          
 
-  
+// Main inventory component
+export class InventoryComponent implements OnInit {
+  allItems: Item[] = [];          // Full item list
+  displayItems: Item[] = [];      // Filtered items for view
+  searchFilter = '';              // Search input value
+
+  // Statistics
   totalItems = 0;
   lowStockCount = 0;
   totalValue = 0;
   popularCount = 0;
 
- 
+  // New item form data
   newItem: Omit<Item, 'id'> = {
     name: '',
     category: 'Electronics',
@@ -34,102 +38,109 @@ export class InventoryComponent implements OnInit {
     comments: ''
   };
 
+  // Edit item data
   editTargetName = '';
   editData: Partial<Omit<Item, 'id'>> = {};
+
+  // UI feedback
   message = '';
   messageType = 'success';
+
+  // Dropdown options
   categories = ['Electronics', 'Furniture', 'Clothing', 'Tools', 'Misc'];
   stockStatuses = ['In Stock', 'Out of Stock', 'Backorder'];
 
+  // Inject inventory service
   constructor(private inventoryService: Inventory) { }
 
+  // Initialize on load
   ngOnInit(): void {
     this.loadItems();
   }
 
+  // Load all items from service
   loadItems(): void {
     this.allItems = this.inventoryService.getAllItems();
-    this.applyFilter();          
+    this.applyFilter();
     this.updateStats();
   }
 
- 
+  // Filter items by search term
   applyFilter(): void {
     if (!this.searchFilter.trim()) {
       this.displayItems = [...this.allItems];
-    } else {
-      const term = this.searchFilter.toLowerCase();
-      this.displayItems = this.allItems.filter(item =>
-        item.name.toLowerCase().includes(term) ||
-        item.category.toLowerCase().includes(term) ||
-        item.supplier.toLowerCase().includes(term)
-      );
+      return;
     }
+    const term = this.searchFilter.toLowerCase();
+    this.displayItems = this.allItems.filter(item =>
+      item.name.toLowerCase().includes(term) ||
+      item.category.toLowerCase().includes(term) ||
+      item.supplier.toLowerCase().includes(term)
+    );
   }
 
+  // Update dashboard statistics
   updateStats(): void {
     this.totalItems = this.allItems.length;
-    this.lowStockCount = this.allItems.filter(item => item.quantity < 5).length;
-    this.totalValue = this.allItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    this.popularCount = this.allItems.filter(item => item.isPopular).length;
+    this.lowStockCount = this.allItems.filter(i => i.quantity < 5).length;
+    this.totalValue = this.allItems.reduce((s, i) => s + i.price * i.quantity, 0);
+    this.popularCount = this.allItems.filter(i => i.isPopular).length;
   }
 
+  // Add new inventory item
   addItem(): void {
-    const result = this.inventoryService.addItem(this.newItem);
-    this.showMessage(result.message, result.success);
-    if (result.success) {
+    const res = this.inventoryService.addItem(this.newItem);
+    this.showMessage(res.message, res.success);
+    if (res.success) {
       this.resetNewItem();
       this.loadItems();
     }
   }
 
+  // Load item data for editing
   prepareEdit(): void {
     const item = this.allItems.find(i => i.name === this.editTargetName);
-    if (item) {
-      this.editData = { ...item };
-    } else {
-      this.showMessage(`Item "${this.editTargetName}" not found.`, false);
-    }
+    item ? (this.editData = { ...item }) : this.showMessage('Item not found', false);
   }
 
+  // Save edited item
   updateItem(): void {
     if (!this.editTargetName) return;
-    const result = this.inventoryService.updateItemByName(this.editTargetName, this.editData);
-    this.showMessage(result.message, result.success);
-    if (result.success) {
-      this.loadItems();
-      this.editTargetName = '';
-      this.editData = {};
-    }
+    const res = this.inventoryService.updateItemByName(this.editTargetName, this.editData);
+    this.showMessage(res.message, res.success);
+    if (res.success) this.loadItems();
   }
 
+  // Delete item by name
   deleteItem(name: string): void {
-    if (confirm(`Delete "${name}"?`)) {
-      const result = this.inventoryService.deleteItemByName(name);
-      this.showMessage(result.message, result.success);
-      if (result.success) this.loadItems();
+    if (confirm(`Delete ${name}?`)) {
+      const res = this.inventoryService.deleteItemByName(name);
+      this.showMessage(res.message, res.success);
+      if (res.success) this.loadItems();
     }
   }
 
- 
+  // Export items to JSON file
   exportData(): void {
-    const dataStr = JSON.stringify(this.allItems, null, 2);
-    const blob = new Blob([dataStr], { type: 'application/json' });
+    const data = JSON.stringify(this.allItems, null, 2);
+    const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `inventory_export_${new Date().toISOString().slice(0,19)}.json`;
+    a.download = `inventory_${new Date().toISOString().slice(0,19)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    this.showMessage('Data exported successfully!', true);
+    this.showMessage('Export successful', true);
   }
 
-  private showMessage(msg: string, isSuccess: boolean): void {
+  // Show success/error message
+  private showMessage(msg: string, success: boolean): void {
     this.message = msg;
-    this.messageType = isSuccess ? 'success' : 'error';
+    this.messageType = success ? 'success' : 'error';
     setTimeout(() => this.message = '', 3000);
   }
 
+  // Reset new item form
   private resetNewItem(): void {
     this.newItem = {
       name: '', category: 'Electronics', quantity: 0, price: 0,

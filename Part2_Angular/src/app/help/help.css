@@ -1,18 +1,24 @@
-
+/* Help page header section */
 .help-header {
   text-align: center;
   margin-bottom: 40px;
 }
+
+/* Main title style */
 h1 {
   font-size: 2.5rem;
   color: #2c7da0;
   margin-bottom: 8px;
 }
+
+/* Description text under title */
 .help-header p {
   color: #6c757d;
   max-width: 600px;
   margin: 0 auto 24px;
 }
+
+/* Search container layout */
 .search-box {
   display: flex;
   justify-content: center;
@@ -20,6 +26,8 @@ h1 {
   max-width: 500px;
   margin: 0 auto;
 }
+
+/* Search input field style */
 .search-box input {
   flex: 1;
   padding: 12px 16px;
@@ -27,6 +35,8 @@ h1 {
   border: 1px solid #ced4da;
   font-size: 1rem;
 }
+
+/* Search button basic style */
 .search-box button {
   padding: 12px 24px;
   border-radius: 40px;
@@ -36,18 +46,23 @@ h1 {
   cursor: pointer;
   transition: all 0.2s;
 }
+
+/* Search button hover effect */
 .search-box button:hover {
   background-color: #1f5068;
   transform: translateY(-2px);
 }
 
 
+/* Category grid layout */
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
   margin-bottom: 48px;
 }
+
+/* Single category card style */
 .category-card {
   background: white;
   border-radius: 24px;
@@ -56,14 +71,20 @@ h1 {
   border: 1px solid #e9ecef;
   transition: transform 0.2s;
 }
+
+/* Category card hover effect */
 .category-card:hover {
   transform: translateY(-4px);
   border-color: #2c7da0;
 }
+
+/* Icon inside category card */
 .category-icon {
   font-size: 2rem;
   margin-bottom: 12px;
 }
+
+/* Category card title */
 .category-card h3 {
   margin: 0 0 16px;
   color: #2c3e50;
@@ -73,14 +94,19 @@ h1 {
 }
 
 
+/* FAQ list container */
 .faq-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
+/* Single FAQ item */
 .faq-item {
   border-bottom: 1px solid #e9ecef;
 }
+
+/* FAQ question bar */
 .faq-question {
   display: flex;
   justify-content: space-between;
@@ -91,24 +117,33 @@ h1 {
   color: #2c3e50;
   transition: color 0.2s;
 }
+
+/* FAQ question hover effect */
 .faq-question:hover {
   color: #2c7da0;
 }
+
+/* FAQ toggle icon (+/-) */
 .toggle-icon {
   font-size: 1.2rem;
   font-weight: 600;
 }
+
+/* FAQ answer content */
 .faq-answer {
   padding: 0 0 12px 0;
   color: #495057;
   line-height: 1.5;
   font-size: 0.9rem;
 }
+
+/* FAQ answer paragraph */
 .faq-answer p {
   margin: 0;
 }
 
 
+/* Contact support section */
 .contact-support {
   text-align: center;
   background: #f8f9fa;
@@ -117,10 +152,14 @@ h1 {
   margin-top: 20px;
   border: 1px solid #e9ecef;
 }
+
+/* Contact section title */
 .contact-support h3 {
   margin: 0 0 8px;
   color: #2c7da0;
 }
+
+/* Contact support button */
 .contact-support button {
   background-color: #2c7da0;
   color: white;
@@ -132,23 +171,32 @@ h1 {
   cursor: pointer;
   transition: all 0.2s;
 }
+
+/* Contact button hover effect */
 .contact-support button:hover {
   background-color: #1f5068;
   transform: translateY(-2px);
 }
+
+/* Email hint text */
 .email-hint {
   font-size: 0.85rem;
   color: #6c757d;
 }
+
+/* Email link style */
 .email-hint a {
   color: #2c7da0;
   text-decoration: none;
 }
+
+/* Email link hover effect */
 .email-hint a:hover {
   text-decoration: underline;
 }
 
 
+/* Mobile responsive styles (under 700px) */
 @media (max-width: 700px) {
   .categories-grid {
     grid-template-columns: 1fr;

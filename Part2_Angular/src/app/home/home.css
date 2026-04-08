@@ -1,184 +1,237 @@
-
+/* Welcome header section - centered text */
 .welcome-section {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  h1 {
-    font-size: 2.5rem;
-    color: #2c7da0;
-    margin-bottom: 8px;
-  }
-  .tagline {
-    font-size: 1.2rem;
-    color: #6c757d;
-  }
-  
- 
-  .nav-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-    margin-bottom: 48px;
-  }
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Main title style */
+h1 {
+  font-size: 2.5rem;
+  color: #2c7da0;
+  margin-bottom: 8px;
+}
+
+/* Subtitle / tagline style */
+.tagline {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+/* Navigation cards container - flex layout */
+.nav-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+/* Single navigation card style */
+.nav-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 20px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+}
+
+/* Hover effect for nav card */
+.nav-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #2c7da0;
+}
+
+/* Active (clicked) effect */
+.nav-card:active {
+  transform: translateY(-2px);
+}
+
+/* Icon inside nav card */
+.card-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+/* Nav card title */
+.nav-card h3 {
+  margin: 0 0 8px;
+  color: #2c7da0;
+  font-size: 1.4rem;
+}
+
+/* Nav card description text */
+.nav-card p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Statistics row container */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+/* Single statistic card */
+.stat-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px 28px;
+  text-align: center;
+  min-width: 160px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s;
+}
+
+/* Hover effect for stat card */
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: #2c7da0;
+}
+
+/* Large number in stat card */
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c7da0;
+}
+
+/* Label below statistic number */
+.stat-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 6px;
+}
+
+/* Recent items table section */
+.recent-section {
+  background: white;
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 32px;
+  border: 1px solid #e9ecef;
+}
+
+/* Section title for recent items */
+.recent-section h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Full width data table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Table header style */
+th {
+  background-color: #e9ecef;
+  color: #2c3e50;
+  font-weight: 600;
+  padding: 12px 10px;
+  border-bottom: 1px solid #ced4da;
+  text-align: left;
+}
+
+/* Table cell style */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* Row hover effect */
+tr:hover td {
+  background-color: #f8f9fa;
+}
+
+/* Empty table message */
+.no-data {
+  text-align: center;
+  color: #6c757d;
+  padding: 20px;
+}
+
+/* System info / note banner */
+.system-note {
+  background: #e9ecef;
+  border-radius: 16px;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #495057;
+  margin-top: 20px;
+}
+
+/* Responsive styles for mobile screens */
+@media (max-width: 700px) {
+  /* Smaller nav cards on mobile */
   .nav-card {
-    background: white;
-    border-radius: 20px;
-    padding: 28px 20px;
-    width: 200px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e9ecef;
+    width: 160px;
+    padding: 20px 12px;
   }
-  .nav-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    border-color: #2c7da0;
-  }
-  .nav-card:active {
-    transform: translateY(-2px);
-  }
+
+  /* Smaller icons on mobile */
   .card-icon {
-    font-size: 48px;
-    margin-bottom: 16px;
+    font-size: 36px;
   }
+
+  /* Smaller card title on mobile */
   .nav-card h3 {
-    margin: 0 0 8px;
-    color: #2c7da0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
-  .nav-card p {
-    margin: 0;
-    color: #6c757d;
-    font-size: 0.85rem;
-    line-height: 1.4;
-  }
-  
-  
+
+  /* Stack stats vertically */
   .stats-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 48px;
+    flex-direction: column;
+    align-items: center;
   }
-  .stat-card {
-    background: white;
-    border-radius: 20px;
-    padding: 20px 28px;
-    text-align: center;
-    min-width: 160px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+  /* Mobile table: convert to cards */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table header on mobile */
+  thead {
+    display: none;
+  }
+
+  /* Style table rows as cards */
+  tr {
+    margin-bottom: 16px;
     border: 1px solid #e9ecef;
-    transition: transform 0.2s;
+    border-radius: 12px;
   }
-  .stat-card:hover {
-    transform: translateY(-4px);
-    border-color: #2c7da0;
+
+  /* Table cell layout on mobile */
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f0f0;
   }
-  .stat-number {
-    font-size: 2rem;
-    font-weight: 700;
+
+  /* Add data label before each cell */
+  td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    width: 40%;
     color: #2c7da0;
   }
-  .stat-label {
-    font-size: 0.85rem;
-    color: #6c757d;
-    margin-top: 6px;
-  }
-  
- 
-  .recent-section {
-    background: white;
-    border-radius: 24px;
-    padding: 20px;
-    margin-bottom: 32px;
-    border: 1px solid #e9ecef;
-  }
-  .recent-section h3 {
-    margin-top: 0;
-    margin-bottom: 16px;
-    color: #2c3e50;
-    font-weight: 600;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  th {
-    background-color: #e9ecef;
-    color: #2c3e50;
-    font-weight: 600;
-    padding: 12px 10px;
-    border-bottom: 1px solid #ced4da;
-    text-align: left;
-  }
-  td {
-    padding: 10px;
-    border-bottom: 1px solid #e9ecef;
-  }
-  tr:hover td {
-    background-color: #f8f9fa;
-  }
-  .no-data {
-    text-align: center;
-    color: #6c757d;
-    padding: 20px;
-  }
-  
-  
-  .system-note {
-    background: #e9ecef;
-    border-radius: 16px;
-    padding: 12px 20px;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #495057;
-    margin-top: 20px;
-  }
-  
-  
-  @media (max-width: 700px) {
-    .nav-card {
-      width: 160px;
-      padding: 20px 12px;
-    }
-    .card-icon {
-      font-size: 36px;
-    }
-    .nav-card h3 {
-      font-size: 1.2rem;
-    }
-    .stats-row {
-      flex-direction: column;
-      align-items: center;
-    }
-    table, thead, tbody, th, td, tr {
-      display: block;
-    }
-    thead {
-      display: none;
-    }
-    tr {
-      margin-bottom: 16px;
-      border: 1px solid #e9ecef;
-      border-radius: 12px;
-    }
-    td {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 12px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    td:before {
-      content: attr(data-label);
-      font-weight: 600;
-      width: 40%;
-      color: #2c7da0;
-    }
-  }
+}

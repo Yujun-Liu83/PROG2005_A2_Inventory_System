@@ -1,11 +1,12 @@
+<!-- Page title -->
 <h2>Inventory Management</h2>
 
-
+<!-- Status message (success/error) -->
 <div *ngIf="message" [class.success]="messageType === 'success'" [class.error]="messageType === 'error'" class="message">
   {{ message }}
 </div>
 
-
+<!-- Inventory statistics cards -->
 <div class="stats-row">
   <div class="stat-card">
     <div class="stat-number">{{ totalItems }}</div>
@@ -25,7 +26,7 @@
   </div>
 </div>
 
-
+<!-- Search and export toolbar -->
 <div class="toolbar">
   <div class="search-box">
     <input type="text" [(ngModel)]="searchFilter" (input)="applyFilter()" placeholder="🔍 Filter by name, category, supplier...">
@@ -33,7 +34,7 @@
   <button class="export-btn" (click)="exportData()">📎 Export as JSON</button>
 </div>
 
-
+<!-- All items table -->
 <h3>All Items</h3>
 <div class="table-responsive">
   <table>
@@ -41,6 +42,7 @@
       <tr><th>ID</th><th>Name</th><th>Category</th><th>Quantity</th><th>Price</th><th>Supplier</th><th>Stock</th><th>Popular</th><th>Action</th></tr>
     </thead>
     <tbody>
+      <!-- Loop through filtered items -->
       <tr *ngFor="let item of displayItems">
         <td data-label="ID">{{ item.id }}</td>
         <td data-label="Name">{{ item.name }}</td>
@@ -52,6 +54,7 @@
         <td data-label="Popular">{{ item.isPopular ? '⭐' : '' }}</td>
         <td data-label="Action"><button class="danger" (click)="deleteItem(item.name)">Delete</button></td>
       </tr>
+      <!-- Empty state -->
       <tr *ngIf="displayItems.length === 0">
         <td colspan="9" class="no-data">No items match your filter.</td>
       </tr>
@@ -59,7 +62,7 @@
   </table>
 </div>
 
-
+<!-- Add new item form -->
 <h3>Add New Item</h3>
 <form (ngSubmit)="addItem()" class="form-grid">
   <label>Name: <input type="text" [(ngModel)]="newItem.name" name="name" required></label>
@@ -81,12 +84,14 @@
   <button type="submit" class="primary">Add Item</button>
 </form>
 
-
+<!-- Edit item section -->
 <h3>Edit Item by Name</h3>
 <div class="edit-section">
   <label>Item Name to Edit: <input type="text" [(ngModel)]="editTargetName" placeholder="Enter current name"></label>
   <button class="primary" (click)="prepareEdit()">Load Data</button>
 </div>
+
+<!-- Edit form (visible when loaded) -->
 <div *ngIf="editData.name" class="edit-form">
   <h4>Edit Details for "{{ editTargetName }}"</h4>
   <label>New Name: <input type="text" [(ngModel)]="editData.name"></label>

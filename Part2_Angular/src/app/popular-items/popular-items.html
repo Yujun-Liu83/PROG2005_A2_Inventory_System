@@ -1,4 +1,7 @@
+<!-- Page title -->
 <h2>Popular Items</h2>
+
+<!-- Statistics cards -->
 <div class="stats-row">
   <div class="stat-card">
     <div class="stat-number">{{ totalPopularItems }}</div>
@@ -14,14 +17,16 @@
   </div>
 </div>
 
-
+<!-- Monthly featured items cards -->
 <div class="monthly-hot">
   <h3>🔥 Monthly Hot Picks</h3>
   <div class="cards-container">
+    <!-- Loop through monthly hot items -->
     <div *ngFor="let item of monthlyHot" class="hot-card" (click)="toggleDetails(item)">
       <img [src]="item.image" alt="{{ item.name }}">
       <div class="card-info">
         <h4>{{ item.name }}</h4>
+        <!-- Star rating display -->
         <div class="stars">
           <span *ngFor="let star of getStarArray(item.stars)" class="star">★</span>
           <span *ngFor="let empty of getStarArray(5 - item.stars)" class="star empty">☆</span>
@@ -29,6 +34,7 @@
         <p class="month">{{ item.month }}</p>
         <p class="sales-badge">{{ item.salesCount }} units sold</p>
       </div>
+      <!-- Expandable details -->
       <div class="expand-details" *ngIf="item.expanded">
         <div class="detail-content">
           <p><strong>Revenue:</strong> {{ item.details.revenue }}</p>
@@ -39,10 +45,11 @@
   </div>
 </div>
 
-
+<!-- Sales progress bars -->
 <div class="sales-breakdown">
   <h3>📊 Sales Breakdown (Top 2)</h3>
   <div class="progress-list">
+    <!-- Dynamic progress bars -->
     <div *ngFor="let data of salesData" class="progress-item">
       <div class="progress-label">{{ data.name }}</div>
       <div class="progress-bar-container">
@@ -53,18 +60,21 @@
   </div>
 </div>
 
-
+<!-- Popular items table -->
 <div class="popular-table-section">
   <h3>📋 All Popular Items (from database)</h3>
+  <!-- Empty state -->
   <div *ngIf="popularItems.length === 0" class="no-popular">
     No popular items found. Mark items as "Popular" in Inventory.
   </div>
+  <!-- Data table -->
   <div *ngIf="popularItems.length > 0" class="table-responsive">
     <table>
       <thead>
         <tr><th>Name</th><th>Category</th><th>Price</th><th>Supplier</th><th>Comments</th></tr>
       </thead>
       <tbody>
+        <!-- Loop items -->
         <tr *ngFor="let item of popularItems">
           <td data-label="Name">{{ item.name }}</td>
           <td data-label="Category">{{ item.category }}</td>
@@ -77,10 +87,11 @@
   </div>
 </div>
 
-
+<!-- Customer reviews -->
 <div class="reviews-section">
   <h3>💬 Customer Reviews</h3>
   <div class="reviews-list">
+    <!-- Review cards loop -->
     <div *ngFor="let review of reviews" class="review-card">
       <p class="review-text">“{{ review.text }}”</p>
       <p class="review-author">— {{ review.author }}</p>
@@ -88,7 +99,7 @@
   </div>
 </div>
 
-
+<!-- Bottom promotion banner -->
 <div class="promo">
   <p>🌟 Love these items? Check the <strong>Inventory</strong> page to add more popular products!</p>
 </div>

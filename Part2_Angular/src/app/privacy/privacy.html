@@ -1,3 +1,4 @@
+<!-- Top hero section for Privacy & Security -->
 <div class="privacy-hero">
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -6,7 +7,7 @@
   </div>
 </div>
 
-
+<!-- Privacy statistics cards -->
 <div class="stats-row">
   <div class="stat-card">
     <div class="stat-number">0</div>
@@ -22,8 +23,9 @@
   </div>
 </div>
 
-
+<!-- Grid layout for privacy policy content -->
 <div class="privacy-grid">
+  <!-- Full-width card: Data collection info -->
   <div class="privacy-card full-width">
     <h3>Data Collection & Use</h3>
     <p>This application does <strong>not</strong> collect any personally identifiable information. All inventory data you enter is stored exclusively in your browser's memory during the current session. No data is transmitted to any server, and we do not log any usage statistics.</p>
@@ -34,6 +36,7 @@
     </ul>
   </div>
 
+  <!-- Data storage explanation -->
   <div class="privacy-card">
     <h3>Data Storage & Retention</h3>
     <p>Data is stored ephemerally in your browser's memory. Refreshing the page or closing the tab will reset the data to the default sample set. There is no permanent database or file storage.</p>
@@ -44,6 +47,7 @@
     </div>
   </div>
 
+  <!-- Security features -->
   <div class="privacy-card">
     <h3>Security Measures</h3>
     <p>We implement industry-standard practices to protect your data within the browser environment:</p>
@@ -55,17 +59,20 @@
     </ul>
   </div>
 
+  <!-- User rights -->
   <div class="privacy-card">
     <h3>Your Rights</h3>
     <p>Because we collect no personal data, there is no personal data to access, rectify, or delete. However, you have full control over the inventory data you input: you can add, edit, or delete any item at any time within your session.</p>
     <button class="mock-btn">Learn more about your rights →</button>
   </div>
 
+  <!-- Third-party sharing -->
   <div class="privacy-card">
     <h3>Third-Party Sharing & Links</h3>
     <p>We do not share any data with third parties. This application contains no external links, ads, or social media plugins. All content is self-contained.</p>
   </div>
 
+  <!-- Policy updates -->
   <div class="privacy-card">
     <h3>Policy Updates & Contact</h3>
     <p>This privacy policy may be updated occasionally. The effective date is always shown below. If you have questions, please contact our privacy team.</p>
@@ -73,15 +80,17 @@
   </div>
 </div>
 
-
+<!-- Privacy FAQ section with toggle -->
 <div class="faq-section">
   <h3>Frequently Asked Questions about Privacy</h3>
   <div class="faq-list">
+    <!-- Loop through FAQ items -->
     <div *ngFor="let faq of faqs; let i = index" class="faq-item">
       <div class="faq-question" (click)="toggleFaq(i)">
         <span>{{ faq.q }}</span>
         <span class="toggle-icon">{{ faq.expanded ? '−' : '+' }}</span>
       </div>
+      <!-- Show answer when expanded -->
       <div class="faq-answer" *ngIf="faq.expanded">
         <p>{{ faq.a }}</p>
       </div>
@@ -89,7 +98,7 @@
   </div>
 </div>
 
-
+<!-- Contact section for privacy concerns -->
 <div class="contact-privacy">
   <h3>Still have concerns?</h3>
   <p>Our data protection officer is here to help.</p>
@@ -97,6 +106,7 @@
   <p class="email-hint">Or write to us at <strong>privacy@inventoryapp.com</strong></p>
 </div>
 
+<!-- Footer copyright -->
 <div class="footer-note">
   <p>© {{ currentYear }} Inventory Management System. All rights reserved.</p>
 </div>

@@ -1,22 +1,38 @@
+<!-- Help Center Header Section -->
 <div class="help-header">
+  <!-- Main page title -->
   <h1>Help Center</h1>
+  <!-- Short description of the help center -->
   <p>Find answers, troubleshoot issues, and learn how to make the most of your inventory system.</p>
+  
+  <!-- Search box with two-way data binding -->
   <div class="search-box">
+    <!-- Search input connected to searchQuery variable -->
     <input type="text" [(ngModel)]="searchQuery" placeholder="Search for help topics...">
     <button class="primary">Search</button>
   </div>
 </div>
 
+<!-- Grid layout for all help categories -->
 <div class="categories-grid">
+  <!-- Loop through each help category -->
   <div *ngFor="let category of helpCategories; let catIdx = index" class="category-card">
+    <!-- Display category icon (e.g. 📦) -->
     <div class="category-icon">{{ category.icon }}</div>
+    <!-- Category name -->
     <h3>{{ category.name }}</h3>
+
+    <!-- FAQ list inside each category -->
     <div class="faq-list">
+      <!-- Loop through each question in the category -->
       <div *ngFor="let faq of category.questions; let qIdx = index" class="faq-item">
+        <!-- Click to expand/collapse answer -->
         <div class="faq-question" (click)="toggleQuestion(catIdx, qIdx)">
           <span>{{ faq.q }}</span>
+          <!-- Toggle icon: + for closed, − for open -->
           <span class="toggle-icon">{{ isExpanded(catIdx, qIdx) ? '−' : '+' }}</span>
         </div>
+        <!-- Show answer only if the question is expanded -->
         <div class="faq-answer" *ngIf="isExpanded(catIdx, qIdx)">
           <p>{{ faq.a }}</p>
         </div>
@@ -25,9 +41,11 @@
   </div>
 </div>
 
+<!-- Contact Support Section at bottom -->
 <div class="contact-support">
   <h3>Still need help?</h3>
   <p>Our support team is ready to assist you.</p>
   <button class="primary">Contact Support →</button>
+  <!-- Email contact info -->
   <p class="email-hint">Or email us at <a href="mailto:support@inventoryapp.com">support@inventoryapp.com</a></p>
 </div>

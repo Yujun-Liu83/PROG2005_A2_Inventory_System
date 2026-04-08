@@ -1,4 +1,4 @@
-
+/* Stats row layout */
 .stats-row {
   display: flex;
   flex-wrap: wrap;
@@ -6,6 +6,8 @@
   justify-content: center;
   margin-bottom: 30px;
 }
+
+/* Single statistic card */
 .stat-card {
   background: white;
   border-radius: 20px;
@@ -16,22 +18,28 @@
   border: 1px solid #e9ecef;
   transition: transform 0.2s;
 }
+
+/* Hover effect for stat card */
 .stat-card:hover {
   transform: translateY(-4px);
   border-color: #2c7da0;
 }
+
+/* Large number in stat card */
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
   color: #2c7da0;
 }
+
+/* Stat card label */
 .stat-label {
   font-size: 0.85rem;
   color: #6c757d;
   margin-top: 6px;
 }
 
-
+/* Top toolbar with search and actions */
 .toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -44,10 +52,14 @@
   border-radius: 60px;
   border: 1px solid #e9ecef;
 }
+
+/* Search input wrapper */
 .search-box {
   flex: 2;
   min-width: 200px;
 }
+
+/* Search input field */
 .search-box input {
   width: 100%;
   padding: 8px 16px;
@@ -55,6 +67,8 @@
   border: 1px solid #ced4da;
   font-size: 0.9rem;
 }
+
+/* Export button style */
 .export-btn {
   background-color: #e9ecef;
   border: none;
@@ -65,20 +79,22 @@
   font-weight: 500;
   color: #2c3e50;
 }
+
+/* Export button hover */
 .export-btn:hover {
   background-color: #2c7da0;
   color: white;
   transform: translateY(-2px);
 }
 
-
+/* Empty state text */
 .no-data {
   text-align: center;
   padding: 20px;
   color: #6c757d;
 }
 
-
+/* Section headings style */
 h2, h3 {
   background: linear-gradient(120deg, #f8f9fa, #e9ecef);
   border-radius: 40px;
@@ -91,6 +107,7 @@ h2, h3 {
   border: 1px solid #dee2e6;
 }
 
+/* Data table */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -100,6 +117,8 @@ table {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+
+/* Table header */
 th {
   background-color: #e9ecef;
   color: #2c3e50;
@@ -108,35 +127,51 @@ th {
   border-bottom: 1px solid #ced4da;
   text-align: left;
 }
+
+/* Table cell */
 td {
   padding: 10px;
   border-bottom: 1px solid #e9ecef;
   background-color: white;
 }
+
+/* Row hover effect */
 tr:hover td {
   background-color: #f8f9fa;
 }
+
+/* Danger button (delete) */
 button.danger {
   background-color: #f8d7da;
   color: #c62828;
 }
+
+/* Danger button hover */
 button.danger:hover {
   background-color: #f5c6cb;
   color: #b71c1c;
 }
+
+/* Primary button */
 button.primary {
   background-color: #2c7da0;
   color: white;
 }
+
+/* Primary button hover */
 button.primary:hover {
   background-color: #1f5068;
 }
+
+/* Form layout grid */
 .form-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   align-items: center;
 }
+
+/* Edit form section */
 .edit-section, .edit-form {
   background-color: #fefefe;
   border-radius: 12px;
@@ -144,6 +179,8 @@ button.primary:hover {
   margin-top: 20px;
   border: 1px solid #e9ecef;
 }
+
+/* Mobile responsive styles */
 @media (max-width: 600px) {
   .stats-row {
     flex-direction: column;
@@ -161,6 +198,7 @@ button.primary:hover {
     text-align: center;
   }
   
+  /* Mobile table card view */
   table, thead, tbody, th, td, tr {
     display: block;
   }

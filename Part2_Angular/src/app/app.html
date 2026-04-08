@@ -1,4 +1,6 @@
+<!-- Main Navigation Bar -->
 <nav>
+  <!-- Router links with active route highlighting -->
   <a routerLink="/" routerLinkActive="active-link">Home</a>
   <a routerLink="/inventory" routerLinkActive="active-link">Inventory</a>
   <a routerLink="/search" routerLinkActive="active-link">Search</a>
@@ -6,6 +8,9 @@
   <a routerLink="/privacy" routerLinkActive="active-link">Privacy</a>
   <a routerLink="/help" routerLinkActive="active-link">Help</a>
 </nav>
+
+<!-- Main Content Container -->
 <div class="container">
+  <!-- Router outlet: dynamic component rendering based on current route -->
   <router-outlet></router-outlet>
 </div>

@@ -1,19 +1,24 @@
+// Import required Angular core modules
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+// Component decorator with metadata
 @Component({
-  selector: 'app-help',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './help.html',
-  styleUrls: ['./help.css']
+  selector: 'app-help',        // Component tag name
+  standalone: true,            // Standalone component mode
+  imports: [CommonModule, FormsModule],  // Required modules
+  templateUrl: './help.html',  // HTML template path
+  styleUrls: ['./help.css']    // CSS style path
 })
+
+// Help Center main component class
 export class HelpComponent {
   
+  // Search input binding value
   searchQuery = '';
 
-  
+  // Help category & FAQ data list
   helpCategories = [
     {
       name: 'Getting Started',
@@ -59,14 +64,16 @@ export class HelpComponent {
     }
   ];
 
-  
+  // Store expand/collapse state for each FAQ item
   expandedStates: { [key: string]: boolean } = {};
 
+  // Toggle FAQ expand/collapse status
   toggleQuestion(catIndex: number, qIndex: number): void {
     const key = `${catIndex}-${qIndex}`;
     this.expandedStates[key] = !this.expandedStates[key];
   }
 
+  // Check if a specific FAQ item is expanded
   isExpanded(catIndex: number, qIndex: number): boolean {
     const key = `${catIndex}-${qIndex}`;
     return this.expandedStates[key] || false;
